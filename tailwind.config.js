@@ -1,10 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: [
-    './index.html', // If you have a demo index.html
-    './src/**/*.{js,ts,jsx,tsx}', // Your library components
-    './stories/**/*.{js,ts,jsx,tsx,mdx}', // Storybook stories (add later)
-  ],
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './.storybook/**/*.{js,jsx,ts,tsx}'],
   theme: {
     extend: {
       // Add your company's design system tokens here
