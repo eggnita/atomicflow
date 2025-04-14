@@ -1,7 +1,9 @@
 import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import react from '@vitejs/plugin-react-swc';
+import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
+import tailwindcss from 'tailwindcss';
+import autoprefixer from 'autoprefixer';
 
 export default defineConfig({
   plugins: [
@@ -30,18 +32,18 @@ export default defineConfig({
     },
     rollupOptions: {
       // Ensure React and ReactDOM aren't bundled into your library
-      external: ['react', 'react-dom', 'react/jsx-runtime'],
+      external: ['react', 'react-dom'],
       output: {
         // Provide global variables to use in the UMD build
         globals: {
           react: 'React',
           'react-dom': 'ReactDOM',
-          'react/jsx-runtime': 'jsxRuntime', // Adjust if needed based on React 19
         },
       },
     },
     sourcemap: true, // Generate source maps for debugging
     emptyOutDir: true, // Clean the output directory before building
+    cssCodeSplit: true,
   },
   // Optional: Alias for easier imports if needed
   // resolve: {
@@ -49,4 +51,9 @@ export default defineConfig({
   //     '@': resolve(__dirname, './src'),
   //   },
   // },
+  css: {
+    postcss: {
+      plugins: [tailwindcss, autoprefixer],
+    },
+  },
 });
