@@ -6,8 +6,8 @@
     "module": "ESNext", // Use modern module system
     "lib": ["DOM", "DOM.Iterable", "ESNext"],
     "jsx": "react-jsx", // Use the new JSX transform
-    "declaration": true, // Generate .d.ts files (handled by vite-plugin-dts too, but good practice)
-    "declarationMap": true, // Generate sourcemaps for declarations
+    "declaration": false, // Let vite-plugin-dts handle this
+    "declarationMap": false, // Let vite-plugin-dts handle this
     "sourceMap": true, // Generate .js.map files
     "outDir": "dist", // Output directory (Vite handles this via build.outDir, but good for TS awareness)
     "rootDir": "src", // Root directory of source files
@@ -16,15 +16,15 @@
     "esModuleInterop": true,
     "skipLibCheck": true, // Skip type checking of declaration files (speeds up compilation)
     "forceConsistentCasingInFileNames": true,
-    "noEmit": true // IMPORTANT: Let Vite handle emission, TS only does type checking
+    "noEmit": true // Let Vite handle all emission
     // Add path aliases if you configured them in Vite
     // "baseUrl": ".",
     // "paths": {
     //   "@/*": ["./src/*"]
     // }
   },
-  "include": ["src" /* "stories" if needed */], // Include your source files
-  "exclude": ["node_modules", "dist" /* other generated files */],
+  "include": ["src"],
+  "exclude": ["node_modules", "dist"],
   "files": [],
   "references": [{ "path": "./tsconfig.app.json" }, { "path": "./tsconfig.node.json" }]
 }
