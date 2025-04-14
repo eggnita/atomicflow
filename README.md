@@ -1,5 +1,8 @@
 # Atomic Flow
 
+[![Development CI](https://github.com/eggnita/atomicflow/actions/workflows/development.yml/badge.svg?branch=development)](https://github.com/eggnita/atomicflow/actions/workflows/development.yml)
+[![Main CI](https://github.com/eggnita/atomicflow/actions/workflows/main.yml/badge.svg?branch=main)](https://github.com/eggnita/atomicflow/actions/workflows/main.yml)
+
 A modern React component library built with React 19, TypeScript, and Tailwind CSS. Atomic Flow provides a collection of reusable, accessible, and customizable UI components following atomic design principles.
 
 ## Features
