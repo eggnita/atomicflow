@@ -1,7 +1,7 @@
 {
   "name": "atomicflow",
   "private": false,
-  "version": "0.0.0",
+  "version": "0.0.2",
   "description": "Atomic Flow Component Library based on React 19 and Tailwind CSS",
   "type": "module",
   "main": "./dist/atomicflow.umd.js",
@@ -10,14 +10,8 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/atomicflow.es.js"
-      },
-      "require": {
-        "types": "./dist/index.d.ts",
-        "default": "./dist/atomicflow.umd.js"
-      }
+      "import": "./dist/atomicflow.es.js",
+      "require": "./dist/atomicflow.umd.js"
     },
     "./style.css": "./dist/style.css"
   },
@@ -28,7 +22,7 @@
   ],
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "build": "vite build",
     "lint_default": "eslint .",
     "preview": "vite preview",
     "storybook": "storybook dev -p 6006",

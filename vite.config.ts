@@ -8,9 +8,16 @@ export default defineConfig({
     react(),
     dts({
       insertTypesEntry: true,
-      outDir: 'dist', // Explicitly set output directory
-      include: ['src'], // Only include source files
-      exclude: ['node_modules', 'dist'], // Exclude generated files
+      outDir: 'dist',
+      include: ['src'],
+      exclude: [
+        'node_modules',
+        'dist',
+        '**/*.test.ts',
+        '**/*.test.tsx',
+        '**/*.stories.ts',
+        '**/*.stories.tsx',
+      ],
     }),
   ],
   build: {
