@@ -10,5 +10,8 @@
     "jsxSingleQuote": true,
     "plugins": [
         "prettier-plugin-tailwindcss"
-    ]
+    ],
+    "useTabs": false,
+    "bracketSameLine": false,
+    "singleAttributePerLine": false
 }
