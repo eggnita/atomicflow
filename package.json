@@ -1,8 +1,25 @@
 {
   "name": "atomicflow",
-  "private": true,
+  "private": false,
   "version": "0.0.0",
+  "description": "Atomic Flow Component Library based on React 19 and Tailwind CSS",
   "type": "module",
+  "main": "./dist/atomicflow.umd.js",
+  "module": "./dist/atomicflow.es.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/atomicflow.es.js",
+      "require": "./dist/atomicflow.umd.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
@@ -14,9 +31,11 @@
     "format": "prettier --write \"src/**/*.{ts,tsx}\" \"*.{js,cjs,json,md}\" --log-level warn",
     "test": "vitest",
     "test:ui": "vitest --ui",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "prepare": "npm run build"
   },
-  "dependencies": {
+  "dependencies": {},
+  "peerDependencies": {
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -69,5 +88,25 @@
     "extends": [
       "plugin:storybook/recommended"
     ]
-  }
+  },
+  "keywords": [
+    "react",
+    "component",
+    "library",
+    "ui",
+    "design system",
+    "atomic",
+    "tailwind",
+    "react 19"
+  ],
+  "author": "Eggnita <vlad.mihuta@eggnita.com> (https://eggnita.com)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eggnita/atomicflow.git"
+  },
+  "bugs": {
+    "url": "https://github.com/eggnita/atomicflow/issues"
+  },
+  "homepage": "https://github.com/eggnita/atomicflow/#readme"
 }

@@ -1,54 +1,114 @@
-# React + TypeScript + Vite
+# Atomic Flow
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React component library built with React 19, TypeScript, and Tailwind CSS. Atomic Flow provides a collection of reusable, accessible, and customizable UI components following atomic design principles.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- 🚀 Built with React 19 and TypeScript
+- 🎨 Styled with Tailwind CSS
+- 📚 Storybook for component documentation and testing
+- 🧪 Comprehensive test coverage with Vitest
+- 📦 Tree-shakeable and optimized for production
+- 🔍 TypeScript support out of the box
+- 🎯 Accessible components following WAI-ARIA guidelines
 
-## Expanding the ESLint configuration
+## Getting Started
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Installation
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-});
+```bash
+npm install atomicflow
+# or
+yarn add atomicflow
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Usage
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+```tsx
+import { Button } from 'atomicflow';
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-});
+function App() {
+  return <Button>Click me</Button>;
+}
 ```
+
+## Development
+
+### Prerequisites
+
+- Node.js (v18 or higher)
+- npm or yarn
+
+### Setup
+
+1. Clone the repository:
+```bash
+git clone https://github.com/eggnita/atomicflow.git
+cd atomicflow
+```
+
+2. Install dependencies:
+```bash
+npm install
+# or
+yarn install
+```
+
+3. Start the development server:
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+### Available Scripts
+
+- `npm run dev` - Start development server
+- `npm run build` - Build the library
+- `npm run storybook` - Start Storybook
+- `npm run build-storybook` - Build Storybook
+- `npm run test` - Run tests
+- `npm run test:ui` - Run tests with UI
+- `npm run coverage` - Generate test coverage
+- `npm run lint` - Run ESLint
+- `npm run format` - Format code with Prettier
+
+## Testing
+
+The project uses Vitest for testing. You can run tests in different modes:
+
+```bash
+# Run tests once
+npm run test
+
+# Run tests in watch mode
+npm run test -- --watch
+
+# Run tests with UI
+npm run test:ui
+
+# Generate coverage report
+npm run coverage
+```
+
+## Storybook
+
+We use Storybook for component documentation and testing. To start Storybook:
+
+```bash
+npm run storybook
+```
+
+This will open Storybook at `http://localhost:6006`.
+
+## Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) before submitting pull requests.
+
+## License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Support
+
+If you encounter any issues or have questions, please [open an issue](https://github.com/eggnita/atomicflow/issues) on GitHub.
