@@ -32,7 +32,7 @@ export const Card: React.FC<CardProps> = ({
     ...props
 }) => {
     // Base classes
-    const baseStyle = 'rounded-lg overflow-hidden border border-gray-200 shadow-sm';
+    const baseStyle = 'rounded-lg overflow-hidden border border-gray-200 shadow-xs';
 
     // Variant classes
     const variantStyles = {

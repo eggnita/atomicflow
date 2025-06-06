@@ -1,5 +1,59 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
 /* You can add custom base styles or component layers here if needed */
+
+/*
+  The default border color has changed to `currentcolor` in Tailwind CSS v4,
+  so we've added these compatibility styles to make sure everything still
+  looks the same as it did with Tailwind CSS v3.
+
+  If we ever want to remove these styles, we need to add an explicit border
+  color utility to any element that depends on these defaults.
+*/
+
+@theme {
+  --font-sans:
+    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
+    'Noto Color Emoji';
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --font-mono:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+}
+
+@variant dark (&:is([data-theme="dark"], [data-theme="dark"] *));
+
+@layer base {
+  *,
+  ::after,
+  ::before,
+  ::backdrop,
+  ::file-selector-button {
+    border-color: var(--color-gray-200, currentcolor);
+  }
+
+  body {
+    @apply bg-white font-sans text-slate-900;
+  }
+
+  [data-theme='dark'] body {
+    @apply bg-slate-900 text-white;
+  }
+
+  .sb-show-main {
+    @apply bg-white;
+  }
+
+  [data-theme='dark'] .sb-show-main {
+    @apply bg-slate-900;
+  }
+
+  #storybook-root {
+    @apply bg-white;
+  }
+
+  [data-theme='dark'] #storybook-root {
+    @apply bg-slate-900;
+  }
+}

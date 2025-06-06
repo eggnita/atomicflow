@@ -2,8 +2,7 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
-import tailwindcss from 'tailwindcss';
-import autoprefixer from 'autoprefixer';
+import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [
@@ -21,6 +20,7 @@ export default defineConfig({
         '**/*.stories.tsx',
       ],
     }),
+    tailwindcss(),
   ],
   build: {
     // Library Mode configuration
@@ -51,9 +51,4 @@ export default defineConfig({
   //     '@': resolve(__dirname, './src'),
   //   },
   // },
-  css: {
-    postcss: {
-      plugins: [tailwindcss, autoprefixer],
-    },
-  },
 });
