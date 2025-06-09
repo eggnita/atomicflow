@@ -1,7 +1,7 @@
 /* 
  * Auto-generated theme file
  * Do not edit manually - this file is generated from your theme configuration
- * Last generated: 2025-06-09T13:35:39.505Z
+ * Last generated: 2025-06-09T13:45:17.102Z
  */
 
 @theme {
@@ -102,9 +102,9 @@
 }
 
 
-/* Force light mode as default */
+/* Use system preference as default */
 :root {
-  --default-theme: 'light';
+  --default-theme: 'system';
 }
 
 body:not([data-theme]) {
@@ -114,6 +114,17 @@ body:not([data-theme]) {
 body:not([data-theme]) .sb-show-main,
 body:not([data-theme]) #storybook-root {
   @apply bg-white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme]) {
+    @apply bg-neutral-900 text-white;
+  }
+
+  body:not([data-theme]) .sb-show-main,
+  body:not([data-theme]) #storybook-root {
+    @apply bg-neutral-900;
+  }
 }
 
 /* Utility classes for easy usage */

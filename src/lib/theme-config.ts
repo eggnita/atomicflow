@@ -132,7 +132,7 @@ export const defaultTheme: ThemeConfig = {
   fontMono: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
   fontSerif: `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
   
-  defaultAppearance: 'light',
+  defaultAppearance: 'system',
   defaultRadius: 'md',
   panelBg: 'solid',
   

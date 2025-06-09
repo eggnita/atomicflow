@@ -23,29 +23,24 @@
     border-color: var(--color-neutral-200, currentcolor);
   }
 
-  /* body {
+  body {
     @apply font-body bg-white text-neutral-900;
-  }
-
-  [data-theme='dark'] body {
-    @apply bg-neutral-900 text-white;
   }
 
   .sb-show-main {
     @apply bg-white;
   }
 
-  [data-theme='dark'] .sb-show-main {
-    @apply bg-neutral-900;
+  [data-theme='dark'] body {
+    @apply bg-neutral-900 text-white;
   }
 
-  #storybook-root {
-    @apply bg-white;
-  }
-
-  [data-theme='dark'] #storybook-root {
+  [data-theme='dark'] .sb-show-main,
+  [data-theme='dark'] #storybook-root,
+  [data-theme='dark'] .docs-story,
+  [data-theme='dark'] #storybook-preview-wrapper {
     @apply bg-neutral-900;
-  } */
+  }
 
   h1,
   h2,
