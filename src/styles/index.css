@@ -23,7 +23,7 @@
     border-color: var(--color-neutral-200, currentcolor);
   }
 
-  body {
+  /* body {
     @apply font-body bg-white text-neutral-900;
   }
 
@@ -45,7 +45,8 @@
 
   [data-theme='dark'] #storybook-root {
     @apply bg-neutral-900;
-  }
+  } */
+
   h1,
   h2,
   h3,

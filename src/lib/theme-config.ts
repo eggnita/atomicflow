@@ -72,7 +72,25 @@ export interface ThemeConfig {
    */
   neutralColor: TailwindNeutralName | ColorScale;
   
-  // Typography
+  /**
+   * Typography Configuration
+   * 
+   * You can use several approaches for fonts:
+   * 
+   * 1. **System Fonts** (default, no loading required):
+   *    fontHeading: 'ui-sans-serif, system-ui, sans-serif'
+   * 
+   * 2. **Google Fonts** (see documentation for import setup):
+   *    fontHeading: '"Inter", ui-sans-serif, system-ui, sans-serif'
+   * 
+   * 3. **Custom Fonts** (place in public/fonts/ folder):
+   *    fontHeading: '"CustomFont", ui-sans-serif, system-ui, sans-serif'
+   * 
+   * 4. **Typekit/Adobe Fonts** (see documentation for setup):
+   *    fontHeading: '"source-sans-pro", ui-sans-serif, system-ui, sans-serif'
+   * 
+   * Always include fallback fonts for better performance and accessibility.
+   */
   fontHeading: string;
   fontBody: string;
   fontMono: string;
@@ -107,13 +125,17 @@ export interface ThemeConfig {
 export const defaultTheme: ThemeConfig = {
   primaryColor: 'blue',      // Using Tailwind color name
   neutralColor: 'slate',     // Using Tailwind color name
+
+  // Default system fonts (no loading required, best performance)
   fontHeading: `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
   fontBody: `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
   fontMono: `ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace`,
   fontSerif: `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
+  
   defaultAppearance: 'light',
   defaultRadius: 'md',
   panelBg: 'solid',
+  
   successColor: 'green',     // Using Tailwind color names
   warningColor: 'yellow',
   errorColor: 'red',

@@ -1,0 +1,270 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+<Meta title="Documentation/Fonts" />
+
+export const RightArrow = () => <svg 
+    viewBox="0 0 14 14" 
+    width="8px" 
+    height="14px" 
+    style={{ 
+      marginLeft: '4px',
+      display: 'inline-block',
+      shapeRendering: 'inherit',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      'path fill': 'currentColor'
+    }}
+>
+  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z"/>
+</svg>
+
+# Custom Fonts Guide
+
+AtomicFlow supports multiple ways to load and use custom fonts in your design system.
+
+## 📁 **Custom Font Files (WOFF/WOFF2)**
+
+### Step 1: Organize Your Font Files
+
+Create a fonts directory in your project:
+
+```
+public/
+└── fonts/
+    ├── MyCustomFont-Regular.woff2
+    ├── MyCustomFont-Regular.woff
+    ├── MyCustomFont-Bold.woff2
+    ├── MyCustomFont-Bold.woff
+    ├── MyCustomFont-Italic.woff2
+    └── MyCustomFont-Italic.woff
+```
+### Step 2: Declare Font Faces
+
+Add font declarations to your main CSS file:
+
+```css
+/* In your src/index.css or src/styles/fonts.css */
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/MyCustomFont-Regular.woff2') format('woff2'),
+       url('/fonts/MyCustomFont-Regular.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap; /* Improves loading performance */
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/MyCustomFont-Bold.woff2') format('woff2'),
+       url('/fonts/MyCustomFont-Bold.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'MyCustomFont';
+  src: url('/fonts/MyCustomFont-Italic.woff2') format('woff2'),
+       url('/fonts/MyCustomFont-Italic.woff') format('woff');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+```
+
+### Step 3: Configure in Theme
+
+```javascript
+// atomicflow.config.js
+export default {
+  primaryColor: 'blue',
+  neutralColor: 'slate',
+  fontHeading: '"MyCustomFont", ui-sans-serif, system-ui, sans-serif',
+  fontBody: '"MyCustomFont", ui-sans-serif, system-ui, sans-serif',
+  // Always include fallback fonts
+};
+```
+
+## 🌐 **Google Fonts**
+
+### Method 1: CSS Import (Recommended)
+
+Add the import to your main CSS file:
+
+```css
+/* In your src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,100..900;1,100..900&display=swap');
+
+/* Or for multiple fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+```
+
+### Method 2: HTML Link
+
+Add to your `index.html`:
+
+```html
+<head>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+</head>
+```
+
+### Method 3: Next.js Font Optimization
+
+```tsx
+// For Next.js projects
+import { Inter, JetBrains_Mono } from 'next/font/google';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+const jetbrainsMono = JetBrains_Mono({ 
+  subsets: ['latin'],
+  variable: '--font-jetbrains',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={`${inter.variable} ${jetbrainsMono.variable}`}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+### Configure Google Fonts in Theme
+
+```javascript
+// atomicflow.config.js
+export default {
+  primaryColor: 'blue',
+  neutralColor: 'slate',
+  
+  // Google Fonts
+  fontHeading: '"Inter", ui-sans-serif, system-ui, sans-serif',
+  fontBody: '"Inter", ui-sans-serif, system-ui, sans-serif',
+  fontMono: '"JetBrains Mono", ui-monospace, SFMono-Regular, monospace',
+  
+  // For Next.js with CSS variables
+  // fontHeading: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+};
+```
+
+## 🎨 **Typekit/Adobe Fonts**
+
+### Step 1: Get Your Kit ID
+
+1. Log in to [Adobe Fonts <RightArrow />](https://fonts.adobe.com)
+2. Create a new web project
+3. Add fonts to your kit
+4. Copy your Kit ID
+
+### Step 2: Add Typekit Script
+
+Add to your `index.html`:
+
+```html
+<head>
+  <!-- Replace 'abc1def' with your actual Kit ID -->
+  <script>
+    (function(d) {
+      var config = {
+        kitId: 'abc1def',
+        scriptTimeout: 3000,
+        async: true
+      },
+      h=d.documentElement,t=setTimeout(function(){h.className=h.className.replace(/\bwf-loading\b/g,"")+" wf-inactive";},config.scriptTimeout),tk=d.createElement("script"),f=false,s=d.getElementsByTagName("script")[0],a;h.className+=" wf-loading";tk.src='https://use.typekit.net/'+config.kitId+'.js';tk.async=true;tk.onload=tk.onreadystatechange=function(){a=this.readyState;if(f||a&&a!="complete"&&a!="loaded")return;f=true;clearTimeout(t);try{Typekit.load(config)}catch(e){}};s.parentNode.insertBefore(tk,s)
+    })(document);
+  </script>
+</head>
+```
+
+### Step 3: Configure Typekit Fonts
+
+```javascript
+// atomicflow.config.js
+export default {
+  primaryColor: 'blue',
+  neutralColor: 'slate',
+  
+  // Use Typekit font names (check your kit for exact names)
+  fontHeading: '"source-sans-pro", ui-sans-serif, system-ui, sans-serif',
+  fontBody: '"source-sans-pro", ui-sans-serif, system-ui, sans-serif',
+  fontMono: '"source-code-pro", ui-monospace, SFMono-Regular, monospace',
+};
+```
+
+## ⚡ **Performance Best Practices**
+
+### 1. Font Loading Optimization
+
+```css
+/* Always use font-display: swap for better performance */
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/CustomFont.woff2') format('woff2');
+  font-display: swap; /* Shows fallback font while loading */
+}
+```
+
+### 2. Preload Critical Fonts
+
+```html
+<!-- Preload your most important font file -->
+<link rel="preload" href="/fonts/MyFont-Regular.woff2" as="font" type="font/woff2" crossorigin>
+```
+
+### 3. Subset Fonts
+
+```css
+/* For Google Fonts, specify character subsets */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&subset=latin&display=swap');
+```
+
+## 🔧 **Framework-Specific Examples**
+
+### React + Vite
+
+```css
+/* src/index.css */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+@font-face {
+  font-family: 'CustomFont';
+  src: url('/fonts/CustomFont.woff2') format('woff2');
+  font-display: swap;
+}
+```
+
+### Next.js App Router
+
+```tsx
+// app/layout.tsx
+import { Inter } from 'next/font/google';
+import './globals.css';
+
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-inter',
+});
+
+export default function RootLayout({ children }) {
+  return (
+    <html lang="en" className={inter.variable}>
+      <body>{children}</body>
+    </html>
+  );
+}
+```
+
+```javascript
+// atomicflow.config.js
+export default {
+  fontHeading: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+  fontBody: 'var(--font-inter), ui-sans-serif, system-ui, sans-serif',
+};
