@@ -1,0 +1,90 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+
+export const RightArrow = () => <svg 
+    viewBox="0 0 14 14" 
+    width="8px" 
+    height="14px" 
+    style={{ 
+      marginLeft: '4px',
+      display: 'inline-block',
+      shapeRendering: 'inherit',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      'path fill': 'currentColor'
+    }}
+>
+  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+</svg>
+
+<Meta title="Documentation/Dark Mode" />
+
+# Dark Mode
+
+AtomicFlow provides comprehensive dark mode support with flexible configuration options.
+
+## 🌙 **How Dark Mode Works**
+
+AtomicFlow uses **data attributes** to manage themes, making it compatible with most modern frameworks and libraries.
+
+### Theme Detection
+
+```javascript
+// Automatic system preference detection
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+// Apply theme
+document.documentElement.setAttribute('data-theme', prefersDark ? 'dark' : 'light');
+```
+
+## 🔧 **Implementation in Your App**
+
+### React Implementation
+
+```tsx
+import { useEffect, useState } from 'react';
+
+function ThemeProvider({ children }) {
+  const [theme, setTheme] = useState('system');
+
+  useEffect(() => {
+    const root = document.documentElement;
+    
+    if (theme === 'system') {
+      const systemTheme = window.matchMedia('(prefers-color-scheme: dark)').matches 
+        ? 'dark' 
+        : 'light';
+      root.setAttribute('data-theme', systemTheme);
+    } else {
+      root.setAttribute('data-theme', theme);
+    }
+  }, [theme]);
+
+  return (
+    <div data-theme={theme}>
+      {children}
+    </div>
+  );
+}
+```
+
+### Next.js Implementation
+
+For Next.js apps, use `next-themes` for better SSR support:
+
+```bash
+npm install next-themes
+```
+
+```tsx
+// pages/_app.tsx
+import { ThemeProvider } from 'next-themes';
+import 'atomicflow/index.css';
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <ThemeProvider attribute="data-theme" defaultTheme="system">
+      <Component {...pageProps} />
+    </ThemeProvider>
+  );
+}
+```

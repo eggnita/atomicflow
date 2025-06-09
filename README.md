@@ -8,7 +8,7 @@ A modern React component library built with React 19, TypeScript, and Tailwind C
 ## Features
 
 - 🚀 Built with React 19 and TypeScript
-- 🎨 Styled with Tailwind CSS v4 and Radix UI
+- 🎨 Styled with Tailwind CSS v4
 - 📚 Storybook for component documentation and testing
 - 🧪 Comprehensive test coverage with Vitest
 - 📦 Tree-shakeable and optimized for production

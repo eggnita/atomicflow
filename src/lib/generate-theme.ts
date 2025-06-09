@@ -1,4 +1,4 @@
-import { ThemeConfig } from './theme-config';
+import { ThemeConfig, isCustomColorScale, ColorScale } from './theme-config';
 
 // Tailwind's official border-radius values
 const radiusMap = {
@@ -14,6 +14,87 @@ const radiusMap = {
   full: 'calc(infinity * 1px)'
 };
 
+// Helper function to generate color CSS variables
+function generateColorVariables(colorName: string, color: string | ColorScale): string {
+  if (isCustomColorScale(color)) {
+    // Custom color scale
+    return Object.entries(color)
+      .map(([shade, value]) => `  --color-${colorName}-${shade}: ${value};`)
+      .join('\n');
+  } else {
+    // Tailwind color name
+    return [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950]
+      .map(shade => `  --color-${colorName}-${shade}: theme(colors.${color}.${shade});`)
+      .join('\n');
+  }
+}
+
+function generateAppearanceCSS(defaultAppearance: 'light' | 'dark' | 'system'): string {
+  switch (defaultAppearance) {
+    case 'light':
+      return `
+/* Force light mode as default */
+:root {
+  --default-theme: 'light';
+}
+
+body:not([data-theme]) {
+  @apply bg-white text-neutral-900;
+}
+
+body:not([data-theme]) .sb-show-main,
+body:not([data-theme]) #storybook-root {
+  @apply bg-white;
+}`;
+
+    case 'dark':
+      return `
+/* Force dark mode as default */
+:root {
+  --default-theme: 'dark';
+}
+
+body:not([data-theme]) {
+  @apply bg-neutral-900 text-white;
+}
+
+body:not([data-theme]) .sb-show-main,
+body:not([data-theme]) #storybook-root {
+  @apply bg-neutral-900;
+}`;
+
+    case 'system':
+      return `
+/* Use system preference as default */
+:root {
+  --default-theme: 'system';
+}
+
+body:not([data-theme]) {
+  @apply bg-white text-neutral-900;
+}
+
+body:not([data-theme]) .sb-show-main,
+body:not([data-theme]) #storybook-root {
+  @apply bg-white;
+}
+
+@media (prefers-color-scheme: dark) {
+  body:not([data-theme]) {
+    @apply bg-neutral-900 text-white;
+  }
+
+  body:not([data-theme]) .sb-show-main,
+  body:not([data-theme]) #storybook-root {
+    @apply bg-neutral-900;
+  }
+}`;
+
+    default:
+      return '';
+  }
+}
+
 export function generateThemeCSS(config: ThemeConfig): string {
   const {
     primaryColor,
@@ -23,12 +104,24 @@ export function generateThemeCSS(config: ThemeConfig): string {
     fontMono,
     fontSerif,
     defaultRadius,
+    defaultAppearance,
     panelBg,
     successColor = 'green',
     warningColor = 'yellow',
-    errorColor = 'red',
+    errorColor = 'red', 
     infoColor = 'cyan'
   } = config;
+
+  // Generate color variables
+  const primaryColorCSS = generateColorVariables('primary', primaryColor);
+  const neutralColorCSS = generateColorVariables('neutral', neutralColor);
+  const successColorCSS = generateColorVariables('success', successColor);
+  const warningColorCSS = generateColorVariables('warning', warningColor);
+  const errorColorCSS = generateColorVariables('error', errorColor);
+  const infoColorCSS = generateColorVariables('info', infoColor);
+
+  // Generate appearance CSS
+  const appearanceCSS = generateAppearanceCSS(defaultAppearance);
 
   return `/* 
  * Auto-generated theme file
@@ -38,40 +131,16 @@ export function generateThemeCSS(config: ThemeConfig): string {
 
 @theme {
   /* Primary Colors */
-  --color-primary-50: theme(colors.${primaryColor}.50);
-  --color-primary-100: theme(colors.${primaryColor}.100);
-  --color-primary-200: theme(colors.${primaryColor}.200);
-  --color-primary-300: theme(colors.${primaryColor}.300);
-  --color-primary-400: theme(colors.${primaryColor}.400);
-  --color-primary-500: theme(colors.${primaryColor}.500);
-  --color-primary-600: theme(colors.${primaryColor}.600);
-  --color-primary-700: theme(colors.${primaryColor}.700);
-  --color-primary-800: theme(colors.${primaryColor}.800);
-  --color-primary-900: theme(colors.${primaryColor}.900);
-  --color-primary-950: theme(colors.${primaryColor}.950);
+${primaryColorCSS}
 
   /* Neutral Colors */
-  --color-neutral-50: theme(colors.${neutralColor}.50);
-  --color-neutral-100: theme(colors.${neutralColor}.100);
-  --color-neutral-200: theme(colors.${neutralColor}.200);
-  --color-neutral-300: theme(colors.${neutralColor}.300);
-  --color-neutral-400: theme(colors.${neutralColor}.400);
-  --color-neutral-500: theme(colors.${neutralColor}.500);
-  --color-neutral-600: theme(colors.${neutralColor}.600);
-  --color-neutral-700: theme(colors.${neutralColor}.700);
-  --color-neutral-800: theme(colors.${neutralColor}.800);
-  --color-neutral-900: theme(colors.${neutralColor}.900);
-  --color-neutral-950: theme(colors.${neutralColor}.950);
+${neutralColorCSS}
 
   /* Semantic Colors */
-  --color-success-500: theme(colors.${successColor}.500);
-  --color-success-600: theme(colors.${successColor}.600);
-  --color-warning-500: theme(colors.${warningColor}.500);
-  --color-warning-600: theme(colors.${warningColor}.600);
-  --color-error-500: theme(colors.${errorColor}.500);
-  --color-error-600: theme(colors.${errorColor}.600);
-  --color-info-500: theme(colors.${infoColor}.500);
-  --color-info-600: theme(colors.${infoColor}.600);
+${successColorCSS}
+${warningColorCSS}  
+${errorColorCSS}
+${infoColorCSS}
 
   /* Typography */
   --font-heading: ${fontHeading};
@@ -79,10 +148,8 @@ export function generateThemeCSS(config: ThemeConfig): string {
   --font-mono: ${fontMono};
   --font-serif: ${fontSerif};
 
-  /* Border Radius - Tailwind Standard Values */
+  /* Border Radius */
   --radius-default: ${radiusMap[defaultRadius]};
-  
-  /* Override Tailwind's radius values to use our default */
   --radius-none: 0;
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
@@ -96,7 +163,10 @@ export function generateThemeCSS(config: ThemeConfig): string {
 
   /* Layout */
   --panel-opacity: ${panelBg === 'translucent' ? '0.8' : '1'};
+  --panel-backdrop-filter: ${panelBg === 'translucent' ? 'blur(10px)' : 'none'};
 }
+
+${appearanceCSS}
 
 /* Utility classes for easy usage */
 @layer components {
@@ -114,6 +184,7 @@ export function generateThemeCSS(config: ThemeConfig): string {
     @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800;
     border-radius: var(--radius-default);
     opacity: var(--panel-opacity);
+    backdrop-filter: var(--panel-backdrop-filter);
   }
   
   .input {
@@ -124,6 +195,7 @@ export function generateThemeCSS(config: ThemeConfig): string {
   .panel {
     @apply bg-white dark:bg-neutral-900;
     opacity: var(--panel-opacity);
+    backdrop-filter: var(--panel-backdrop-filter);
     border-radius: var(--radius-default);
   }
 }
@@ -133,20 +205,48 @@ export function generateThemeCSS(config: ThemeConfig): string {
 export function validateThemeConfig(config: Partial<ThemeConfig>): string[] {
   const errors: string[] = [];
   
-  const validColors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
+  const validTailwindColors = ['slate', 'gray', 'zinc', 'neutral', 'stone', 'red', 'orange', 'amber', 'yellow', 'lime', 'green', 'emerald', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet', 'purple', 'fuchsia', 'pink', 'rose'];
   const validNeutralColors = ['slate', 'gray', 'zinc', 'neutral', 'stone'];
-  const validRadiusValues = ['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', 'full'];
-  
-  if (config.primaryColor && !validColors.includes(config.primaryColor)) {
-    errors.push(`Invalid primaryColor: ${config.primaryColor}. Must be one of: ${validColors.join(', ')}`);
+  const requiredShades = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950];
+
+  // Validate primary color
+  if (config.primaryColor) {
+    if (typeof config.primaryColor === 'string') {
+      if (!validTailwindColors.includes(config.primaryColor)) {
+        errors.push(`Invalid primaryColor: ${config.primaryColor}. Must be a valid Tailwind color name or custom color scale.`);
+      }
+    } else if (isCustomColorScale(config.primaryColor)) {
+      // Validate custom color scale
+      for (const shade of requiredShades) {
+        if (!config.primaryColor[shade as keyof typeof config.primaryColor]) {
+          errors.push(`Missing shade ${shade} in custom primaryColor scale.`);
+        }
+      }
+    } else {
+      errors.push('Invalid primaryColor format. Must be a string or ColorScale object.');
+    }
   }
-  
-  if (config.neutralColor && !validNeutralColors.includes(config.neutralColor)) {
-    errors.push(`Invalid neutralColor: ${config.neutralColor}. Must be one of: ${validNeutralColors.join(', ')}`);
+
+  // Validate neutral color
+  if (config.neutralColor) {
+    if (typeof config.neutralColor === 'string') {
+      if (!validNeutralColors.includes(config.neutralColor)) {
+        errors.push(`Invalid neutralColor: ${config.neutralColor}. Must be one of: ${validNeutralColors.join(', ')}`);
+      }
+    } else if (isCustomColorScale(config.neutralColor)) {
+      // Validate custom color scale
+      for (const shade of requiredShades) {
+        if (!config.neutralColor[shade as keyof typeof config.neutralColor]) {
+          errors.push(`Missing shade ${shade} in custom neutralColor scale.`);
+        }
+      }
+    } else {
+      errors.push('Invalid neutralColor format. Must be a string or ColorScale object.');
+    }
   }
-  
-  if (config.defaultRadius && !validRadiusValues.includes(config.defaultRadius)) {
-    errors.push(`Invalid defaultRadius: ${config.defaultRadius}. Must be one of: ${validRadiusValues.join(', ')}`);
+
+  if (config.defaultRadius && !['none', 'xs', 'sm', 'md', 'lg', 'xl', '2xl', '3xl', '4xl', 'full'].includes(config.defaultRadius)) {
+    errors.push(`Invalid defaultRadius: ${config.defaultRadius}. Must be one of: none, xs, sm, md, lg, xl, 2xl, 3xl, 4xl, full`);
   }
   
   if (config.defaultAppearance && !['light', 'dark'].includes(config.defaultAppearance)) {

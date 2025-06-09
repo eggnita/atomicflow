@@ -1,0 +1,153 @@
+import { Meta } from "@storybook/addon-docs/blocks";
+import Github from "./assets/github.svg";
+
+export const RightArrow = () => <svg 
+    viewBox="0 0 14 14" 
+    width="8px" 
+    height="14px" 
+    style={{ 
+      marginLeft: '4px',
+      display: 'inline-block',
+      shapeRendering: 'inherit',
+      verticalAlign: 'middle',
+      fill: 'currentColor',
+      'path fill': 'currentColor'
+    }}
+>
+  <path d="m11.1 7.35-5.5 5.5a.5.5 0 0 1-.7-.7L10.04 7 4.9 1.85a.5.5 0 1 1 .7-.7l5.5 5.5c.2.2.2.5 0 .7Z" />
+</svg>
+
+<Meta title="Documentation/Introduction" />
+
+<div className="sb-container">
+  <div className='sb-section-title'>
+    # AtomicFlow Design System
+
+    A modern, accessible, and highly customizable React component library built for the future of web development.
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🎯 Our Mission</h4>
+      <p className="sb-section-item-paragraph">
+        AtomicFlow aims to provide developers with a comprehensive design system that doesn't compromise on flexibility, accessibility, or developer experience. We believe that great design systems should be both powerful and easy to use.
+      </p>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">⚡ Built with Modern Technologies</h4>
+      <p className="sb-section-item-paragraph">
+        AtomicFlow is built on top of industry-leading technologies to ensure performance, maintainability, and future-proofing:
+      </p>
+      <ul>
+        <li><strong>React 19</strong> - Latest React with improved performance and features</li>
+        <li><strong>TypeScript</strong> - Full type safety and excellent developer experience</li>
+        <li><strong>Tailwind CSS v4</strong> - Utility-first CSS framework with automatic content detection</li>
+        <li><strong>Radix UI</strong> - Unstyled, accessible primitives for complex components</li>
+        <li><strong>Vite</strong> - Lightning-fast build tool for modern web development</li>
+        <li><strong>Storybook 9</strong> - Component development and documentation environment</li>
+      </ul>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🎨 Theme-First Architecture</h4>
+      <p className="sb-section-item-paragraph">
+        Every component is designed with theming in mind. Configure your entire design system through a simple configuration file:
+      </p>
+      <pre style={{
+        background: '#f6f8fa',
+        padding: '16px',
+        borderRadius: '8px',
+        fontSize: '14px',
+        overflow: 'auto'
+      }}>
+        <code>{`// atomicflow.config.js
+export default {
+  primaryColor: 'emerald',     // or custom color scale
+  neutralColor: 'zinc',        // or custom color scale  
+  defaultRadius: 'lg',         // border radius
+  defaultAppearance: 'system', // light/dark/system
+  panelBg: 'translucent',      // solid/translucent
+  fontHeading: '"Inter", sans-serif',
+  fontBody: '"Inter", sans-serif'
+};`}</code>
+      </pre>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">♿ Accessibility First</h4>
+      <p className="sb-section-item-paragraph">
+        Built with accessibility as a core principle, not an afterthought:
+      </p>
+      <ul>
+        <li>WCAG 2.1 AA compliant components</li>
+        <li>Keyboard navigation support</li>
+        <li>Screen reader optimized</li>
+        <li>Focus management</li>
+        <li>Automated accessibility testing</li>
+      </ul>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">🔧 Developer Experience</h4>
+      <p className="sb-section-item-paragraph">
+        We prioritize the developer experience with features that make building UIs a joy:
+      </p>
+      <ul>
+        <li>Full TypeScript support with intelligent autocomplete</li>
+        <li>Hot reload theme configuration</li>
+        <li>Comprehensive Storybook documentation</li>
+        <li>Tree-shakeable imports</li>
+        <li>Consistent API across all components</li>
+        <li>Zero-config setup for most use cases</li>
+      </ul>
+    </div>
+  </div>
+
+  <div className="sb-section">
+    <div className="sb-section-item">
+      <h4 className="sb-section-item-heading">📚 Framework Links</h4>
+      <p className="sb-section-item-paragraph">
+        Learn more about the technologies powering AtomicFlow:
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '12px', marginTop: '16px' }}>
+        <a href="https://react.dev/" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          React 19 Documentation<RightArrow />
+        </a>
+        <a href="https://www.typescriptlang.org/docs/" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          TypeScript Docs<RightArrow />
+        </a>
+        <a href="https://tailwindcss.com/docs" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          Tailwind CSS v4<RightArrow />
+        </a>
+        <a href="https://www.radix-ui.com/primitives" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          Radix UI Primitives<RightArrow />
+        </a>
+        <a href="https://vitejs.dev/guide/" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          Vite Documentation<RightArrow />
+        </a>
+        <a href="https://storybook.js.org/docs" target="_blank" style={{ textDecoration: 'none', padding: '8px', border: '1px solid #e1e5e9', borderRadius: '6px' }}>
+          Storybook Docs<RightArrow />
+        </a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div className="sb-section sb-socials">
+  <div className="sb-section-item">
+    <img src={Github} alt="Github logo" className="sb-explore-image"/>
+    Contribute to AtomicFlow and help build the future of design systems.
+    <a href="https://github.com/eggnita/atomicflow" target="_blank">
+      View on GitHub<RightArrow />
+    </a>
+  </div>
+</div>
