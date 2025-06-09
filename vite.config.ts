@@ -3,9 +3,11 @@ import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import dts from 'vite-plugin-dts';
 import tailwindcss from '@tailwindcss/vite';
+import { themeConfigPlugin } from './src/lib/vite-theme-plugin';
 
 export default defineConfig({
   plugins: [
+    themeConfigPlugin(),
     react(),
     dts({
       insertTypesEntry: true,

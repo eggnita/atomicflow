@@ -1,0 +1,97 @@
+/* 
+ * Auto-generated theme file
+ * Do not edit manually - this file is generated from your theme configuration
+ * Last generated: 2025-06-09T12:29:25.506Z
+ */
+
+@theme {
+  /* Primary Colors */
+  --color-primary-50: theme(colors.red.50);
+  --color-primary-100: theme(colors.red.100);
+  --color-primary-200: theme(colors.red.200);
+  --color-primary-300: theme(colors.red.300);
+  --color-primary-400: theme(colors.red.400);
+  --color-primary-500: theme(colors.red.500);
+  --color-primary-600: theme(colors.red.600);
+  --color-primary-700: theme(colors.red.700);
+  --color-primary-800: theme(colors.red.800);
+  --color-primary-900: theme(colors.red.900);
+  --color-primary-950: theme(colors.red.950);
+
+  /* Neutral Colors */
+  --color-neutral-50: theme(colors.slate.50);
+  --color-neutral-100: theme(colors.slate.100);
+  --color-neutral-200: theme(colors.slate.200);
+  --color-neutral-300: theme(colors.slate.300);
+  --color-neutral-400: theme(colors.slate.400);
+  --color-neutral-500: theme(colors.slate.500);
+  --color-neutral-600: theme(colors.slate.600);
+  --color-neutral-700: theme(colors.slate.700);
+  --color-neutral-800: theme(colors.slate.800);
+  --color-neutral-900: theme(colors.slate.900);
+  --color-neutral-950: theme(colors.slate.950);
+
+  /* Semantic Colors */
+  --color-success-500: theme(colors.green.500);
+  --color-success-600: theme(colors.green.600);
+  --color-warning-500: theme(colors.yellow.500);
+  --color-warning-600: theme(colors.yellow.600);
+  --color-error-500: theme(colors.red.500);
+  --color-error-600: theme(colors.red.600);
+  --color-info-500: theme(colors.cyan.500);
+  --color-info-600: theme(colors.cyan.600);
+
+  /* Typography */
+  --font-heading: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-body: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+  --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+
+  /* Border Radius - Tailwind Standard Values */
+  --radius-default: 0.375rem;
+  
+  /* Override Tailwind's radius values to use our default */
+  --radius-none: 0;
+  --radius-xs: 0.125rem;
+  --radius-sm: 0.25rem;
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 1rem;
+  --radius-3xl: 1.5rem;
+  --radius-4xl: 2rem;
+  --radius-full: calc(infinity * 1px);
+
+  /* Layout */
+  --panel-opacity: 1;
+}
+
+/* Utility classes for easy usage */
+@layer components {
+  .btn-primary {
+    @apply bg-primary-500 hover:bg-primary-600 text-white;
+    border-radius: var(--radius-default);
+  }
+  
+  .btn-secondary {
+    @apply bg-neutral-200 hover:bg-neutral-300 text-neutral-900;
+    border-radius: var(--radius-default);
+  }
+  
+  .card {
+    @apply bg-white dark:bg-neutral-900 border border-neutral-200 dark:border-neutral-800;
+    border-radius: var(--radius-default);
+    opacity: var(--panel-opacity);
+  }
+  
+  .input {
+    @apply bg-white dark:bg-neutral-900 border border-neutral-300 dark:border-neutral-700;
+    border-radius: var(--radius-default);
+  }
+  
+  .panel {
+    @apply bg-white dark:bg-neutral-900;
+    opacity: var(--panel-opacity);
+    border-radius: var(--radius-default);
+  }
+}

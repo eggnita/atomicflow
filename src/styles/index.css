@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import './theme.css';
 
 /* You can add custom base styles or component layers here if needed */
 
@@ -11,17 +12,6 @@
   color utility to any element that depends on these defaults.
 */
 
-@theme {
-  --font-sans:
-    ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol',
-    'Noto Color Emoji';
-  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-  --font-mono:
-    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
-    monospace;
-  --font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-}
-
 @variant dark (&:is([data-theme="dark"], [data-theme="dark"] *));
 
 @layer base {
@@ -30,15 +20,15 @@
   ::before,
   ::backdrop,
   ::file-selector-button {
-    border-color: var(--color-gray-200, currentcolor);
+    border-color: var(--color-neutral-200, currentcolor);
   }
 
   body {
-    @apply bg-white font-sans text-slate-900;
+    @apply font-body bg-white text-neutral-900;
   }
 
   [data-theme='dark'] body {
-    @apply bg-slate-900 text-white;
+    @apply bg-neutral-900 text-white;
   }
 
   .sb-show-main {
@@ -46,7 +36,7 @@
   }
 
   [data-theme='dark'] .sb-show-main {
-    @apply bg-slate-900;
+    @apply bg-neutral-900;
   }
 
   #storybook-root {
@@ -54,6 +44,22 @@
   }
 
   [data-theme='dark'] #storybook-root {
-    @apply bg-slate-900;
+    @apply bg-neutral-900;
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+  p {
+    @apply font-body;
+  }
+  code,
+  pre,
+  kbd {
+    @apply font-mono;
   }
 }
