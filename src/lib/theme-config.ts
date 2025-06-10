@@ -116,15 +116,15 @@ export interface ThemeConfig {
    *   950: '#450a0a'
    * }
    */
-  successColor?: TailwindColorName | ColorScale;
-  warningColor?: TailwindColorName | ColorScale;
-  errorColor?: TailwindColorName | ColorScale;
-  infoColor?: TailwindColorName | ColorScale;
+  successColor: TailwindColorName | ColorScale;
+  warningColor: TailwindColorName | ColorScale;
+  errorColor: TailwindColorName | ColorScale;
+  infoColor: TailwindColorName | ColorScale;
 }
 
 export const defaultTheme: ThemeConfig = {
-  primaryColor: 'blue',      // Using Tailwind color name
-  neutralColor: 'slate',     // Using Tailwind color name
+  primaryColor: 'blue',
+  neutralColor: 'slate',
 
   // Default system fonts (no loading required, best performance)
   fontHeading: `ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji"`,
@@ -136,7 +136,7 @@ export const defaultTheme: ThemeConfig = {
   defaultRadius: 'lg',
   panelBg: 'solid',
   
-  successColor: 'green',     // Using Tailwind color names
+  successColor: 'green',
   warningColor: 'yellow',
   errorColor: 'red',
   infoColor: 'cyan',

@@ -68,10 +68,10 @@ export function generateThemeCSS(config: ThemeConfig): string {
     defaultRadius,
     defaultAppearance,
     panelBg,
-    successColor = 'green',
-    warningColor = 'yellow',
-    errorColor = 'red', 
-    infoColor = 'cyan'
+    successColor,
+    warningColor,
+    errorColor,
+    infoColor
   } = config;
 
   // Generate color variables
