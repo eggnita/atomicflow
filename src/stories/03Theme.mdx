@@ -25,9 +25,10 @@ export const RightArrow = () => <svg
     Customize every aspect of AtomicFlow to match your brand and design requirements with a simple configuration file.
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🎨 Overview</h4>
+      <h3 className="sb-section-item-heading">🎨 Overview</h3>
       <p className="sb-section-item-paragraph">
         AtomicFlow uses a theme-first architecture where all design decisions are controlled through a single configuration file. This approach ensures consistency across your application while providing maximum flexibility.
       </p>
@@ -42,86 +43,67 @@ export const RightArrow = () => <svg
       </div>
     </div>
   </div>
-
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">⚙️ Basic Configuration</h4>
+      <h3 className="sb-section-item-heading">⚙️ Basic Configuration</h3>
       <p className="sb-section-item-paragraph">
         Create an <code>atomicflow.config.js</code> file in your project root:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// atomicflow.config.js
-/** @type {import('atomicflow').ThemeConfig} */
-export default {
-  primaryColor: 'blue',
-  neutralColor: 'slate',
-  defaultRadius: 'md',
-  defaultAppearance: 'system',
-  panelBg: 'solid',
-  fontHeading: '"Inter", sans-serif',
-  fontBody: '"Inter", sans-serif'
-};`}</code>
-      </pre>
+      ```tsx
+      // atomicflow.config.tsx
+      import type { ThemeConfig } from 'atomicflow';
+
+      const config: ThemeConfig = {
+        primaryColor: 'blue',
+        neutralColor: 'slate',
+        defaultRadius: 'md',
+        defaultAppearance: 'system',
+        panelBg: 'solid',
+        fontHeading: '"Inter", sans-serif',
+        fontBody: '"Inter", sans-serif'
+      };
+
+      export default config;
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🎯 Primary Color</h4>
+      <h3 className="sb-section-item-heading">🎯 Primary Color</h3>
       <p className="sb-section-item-paragraph">
         The primary color is used for buttons, links, focus states, and other interactive elements. You have two options:
       </p>
       
       <div style={{ marginBottom: '24px' }}>
         <strong>Option 1: Tailwind Color Names</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-        color: '#000'
-        }}>
-          <code>{`primaryColor: 'emerald'  // Uses Tailwind's emerald color scale`}</code>
-        </pre>
-        <p style={{ fontSize: '14px', margin: '8px 0' }}>
+        ```tsx
+        primaryColor: 'emerald'  // Uses Tailwind's emerald color scale
+        ```
+        <div style={{ fontSize: '14px', margin: '8px 0' }}>
           Available colors: <code>slate</code>, <code>gray</code>, <code>zinc</code>, <code>neutral</code>, <code>stone</code>, <code>red</code>, <code>orange</code>, <code>amber</code>, <code>yellow</code>, <code>lime</code>, <code>green</code>, <code>emerald</code>, <code>teal</code>, <code>cyan</code>, <code>sky</code>, <code>blue</code>, <code>indigo</code>, <code>violet</code>, <code>purple</code>, <code>fuchsia</code>, <code>pink</code>, <code>rose</code>
-        </p>
+        </div>
       </div>
 
       <div>
         <strong>Option 2: Custom Color Scale</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-        color: '#000'
-        }}>
-          <code>{`primaryColor: {
-  50: '#f0f9ff',   // Lightest shade
-  100: '#e0f2fe',
-  200: '#bae6fd',
-  300: '#7dd3fc',
-  400: '#38bdf8',
-  500: '#0ea5e9',  // Main brand color
-  600: '#0284c7',
-  700: '#0369a1',
-  800: '#075985',
-  900: '#0c4a6e',
-  950: '#082f49'   // Darkest shade
-}`}</code>
-        </pre>
+        ```tsx
+        primaryColor: {
+          50: '#f0f9ff',   // Lightest shade
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',  // Main brand color
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49'   // Darkest shade
+        }
+        ```
         <div style={{
           background: '#fff3cd',
           border: '1px solid #ffeaa7',
@@ -135,50 +117,38 @@ export default {
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">⚪ Neutral Color</h4>
+      <h3 className="sb-section-item-heading">⚪ Neutral Color</h3>
       <p className="sb-section-item-paragraph">
         Neutral colors are used for text, backgrounds, borders, and other non-interactive elements:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// Tailwind neutral colors
-neutralColor: 'slate'  // Options: slate, gray, zinc, neutral, stone
+      ```tsx
+      // Tailwind neutral colors
+      neutralColor: 'slate'  // Options: slate, gray, zinc, neutral, stone
 
-// Or custom neutral scale (same format as primaryColor)
-neutralColor: {
-  50: '#fafafa',
-  100: '#f4f4f5',
-  // ... all shades 50-950
-  950: '#09090b'
-}`}</code>
-      </pre>
+      // Or custom neutral scale (same format as primaryColor)
+      neutralColor: {
+        50: '#fafafa',
+        100: '#f4f4f5',
+        // ... all shades 50-950
+        950: '#09090b'
+      }
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">📐 Border Radius</h4>
+      <h3 className="sb-section-item-heading">📐 Border Radius</h3>
       <p className="sb-section-item-paragraph">
         Control the roundness of buttons, cards, inputs, and other components:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`defaultRadius: 'lg'  // Applied to components like Button, Card, Input, etc.`}</code>
-      </pre>
+      ```tsx
+      defaultRadius: 'lg'  // Applied to components like Button, Card, Input, etc.
+      ```
       <div style={{ marginTop: '16px' }}>
         <strong>Available options:</strong>
         <ul style={{ marginTop: '8px' }}>
@@ -197,22 +167,16 @@ neutralColor: {
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🌓 Default Appearance</h4>
+      <h3 className="sb-section-item-heading">🌓 Default Appearance</h3>
       <p className="sb-section-item-paragraph">
         Set the default color scheme for your application:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`defaultAppearance: 'system'  // Respects user's OS preference`}</code>
-      </pre>
+      ```tsx
+      defaultAppearance: 'system'  // Respects user's OS preference
+      ```
       <div style={{ marginTop: '16px' }}>
         <strong>Options:</strong>
         <ul style={{ marginTop: '8px' }}>
@@ -224,22 +188,16 @@ neutralColor: {
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">✨ Panel Background</h4>
+      <h3 className="sb-section-item-heading">✨ Panel Background</h3>
       <p className="sb-section-item-paragraph">
         Configure the background style for cards, modals, and other panel components:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`panelBg: 'translucent'  // Adds backdrop blur effect`}</code>
-      </pre>
+      ```tsx
+      panelBg: 'translucent'  // Adds backdrop blur effect
+      ```
       <div style={{ marginTop: '16px' }}>
         <strong>Options:</strong>
         <ul style={{ marginTop: '8px' }}>
@@ -250,25 +208,19 @@ neutralColor: {
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🔤 Typography</h4>
+      <h3 className="sb-section-item-heading">🔤 Typography</h3>
       <p className="sb-section-item-paragraph">
         Define font families for different text elements:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`fontHeading: '"Inter", ui-sans-serif, system-ui, sans-serif',
-fontBody: '"Inter", ui-sans-serif, system-ui, sans-serif',
-fontMono: '"JetBrains Mono", ui-monospace, monospace',
-fontSerif: '"Playfair Display", ui-serif, Georgia, serif'`}</code>
-      </pre>
+      ```tsx
+      fontHeading: '"Inter", ui-sans-serif, system-ui, sans-serif',
+      fontBody: '"Inter", ui-sans-serif, system-ui, sans-serif',
+      fontMono: '"JetBrains Mono", ui-monospace, monospace',
+      fontSerif: '"Playfair Display", ui-serif, Georgia, serif'
+      ```
       <div style={{ marginTop: '16px' }}>
         <strong>Usage:</strong>
         <ul style={{ marginTop: '8px' }}>
@@ -281,39 +233,34 @@ fontSerif: '"Playfair Display", ui-serif, Georgia, serif'`}</code>
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🎯 Semantic Colors</h4>
+      <h3 className="sb-section-item-heading">🎯 Semantic Colors</h3>
       <p className="sb-section-item-paragraph">
         Configure colors for success, warning, error, and info states:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// Using Tailwind colors
-successColor: 'green',
-warningColor: 'amber',
-errorColor: 'red',
-infoColor: 'blue',
+      ```tsx
+      // Using Tailwind colors
+      successColor: 'green',
+      warningColor: 'amber', 
+      errorColor: 'red',
+      infoColor: 'blue',
 
-// Or custom color scales (same format as primaryColor)
-successColor: {
-  50: '#f0fdf4',
-  // ... all shades
-  950: '#052e16'
-}`}</code>
-      </pre>
+      // Or custom color scales (same format as primaryColor)
+      successColor: {
+        50: '#f0fdf4',
+        // ... all shades
+        950: '#052e16'
+      }
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">📁 Configuration File Options</h4>
+      <h3 className="sb-section-item-heading">📁 Configuration File Options</h3>
       <p className="sb-section-item-paragraph">
         AtomicFlow looks for theme configuration in these files (in order):
       </p>
@@ -327,111 +274,104 @@ successColor: {
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">💻 TypeScript Configuration</h4>
+      <h3 className="sb-section-item-heading">💻 TypeScript Configuration</h3>
       <p className="sb-section-item-paragraph">
         For the best development experience, use TypeScript with full type safety:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// atomicflow.config.ts
-import type { ThemeConfig, ColorScale } from 'atomicflow';
+      ```tsx
+      // atomicflow.config.ts
+      import type { ThemeConfig, ColorScale } from 'atomicflow';
 
-// Define custom colors with full type safety
-const brandBlue: ColorScale = {
-  50: '#eff6ff',
-  100: '#dbeafe',
-  200: '#bfdbfe',
-  300: '#93c5fd',
-  400: '#60a5fa',
-  500: '#3b82f6',  // Main brand color
-  600: '#2563eb',
-  700: '#1d4ed8',
-  800: '#1e40af',
-  900: '#1e3a8a',
-  950: '#172554'
-};
+      // Define custom colors with full type safety
+      const brandBlue: ColorScale = {
+        50: '#eff6ff',
+        100: '#dbeafe',
+        200: '#bfdbfe',
+        300: '#93c5fd',
+        400: '#60a5fa',
+        500: '#3b82f6',  // Main brand color
+        600: '#2563eb',
+        700: '#1d4ed8',
+        800: '#1e40af',
+        900: '#1e3a8a',
+        950: '#172554'
+      };
 
-const config: ThemeConfig = {
-  primaryColor: brandBlue,     // Full autocomplete
-  neutralColor: 'slate',       // IntelliSense suggestions
-  defaultRadius: 'lg',         // Type-safe options
-  defaultAppearance: 'system',
-  panelBg: 'translucent',
-  fontHeading: '"Inter", sans-serif',
-  fontBody: '"Inter", sans-serif'
-};
+      const config: ThemeConfig = {
+        primaryColor: brandBlue,     // Full autocomplete
+        neutralColor: 'slate',       // IntelliSense suggestions
+        defaultRadius: 'lg',         // Type-safe options
+        defaultAppearance: 'system',
+        panelBg: 'translucent',
+        fontHeading: '"Inter", sans-serif',
+        fontBody: '"Inter", sans-serif'
+      };
 
-export default config;`}</code>
-      </pre>
+      export default config;
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🔍 Complete Example</h4>
+      <h3 className="sb-section-item-heading">🔍 Complete Example</h3>
       <p className="sb-section-item-paragraph">
         Here's a comprehensive theme configuration showcasing all available options:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// atomicflow.config.js
-export default {
-  // Brand colors (using custom scale)
-  primaryColor: {
-    50: '#f0f9ff',
-    100: '#e0f2fe',
-    200: '#bae6fd',
-    300: '#7dd3fc',
-    400: '#38bdf8',
-    500: '#0ea5e9',
-    600: '#0284c7',
-    700: '#0369a1',
-    800: '#075985',
-    900: '#0c4a6e',
-    950: '#082f49'
-  },
-  
-  // Neutral colors (using Tailwind)
-  neutralColor: 'zinc',
-  
-  // Typography
-  fontHeading: '"Cal Sans", "Inter", sans-serif',
-  fontBody: '"Inter", ui-sans-serif, system-ui, sans-serif',
-  fontMono: '"JetBrains Mono", ui-monospace, monospace',
-  fontSerif: '"Playfair Display", ui-serif, Georgia, serif',
-  
-  // Appearance
-  defaultAppearance: 'system',
-  defaultRadius: 'lg',
-  panelBg: 'translucent',
-  
-  // Semantic colors
-  successColor: 'emerald',
-  warningColor: 'amber',
-  errorColor: 'red',
-  infoColor: 'sky'
-};`}</code>
-      </pre>
+      ```tsx
+      // atomicflow.config.ts
+      import type { ThemeConfig } from 'atomicflow';
+
+      const config: ThemeConfig = {
+        // Brand colors (using custom scale)
+        primaryColor: {
+          50: '#f0f9ff',
+          100: '#e0f2fe',
+          200: '#bae6fd',
+          300: '#7dd3fc',
+          400: '#38bdf8',
+          500: '#0ea5e9',
+          600: '#0284c7',
+          700: '#0369a1',
+          800: '#075985',
+          900: '#0c4a6e',
+          950: '#082f49'
+        },
+        
+        // Neutral colors (using Tailwind)
+        neutralColor: 'zinc',
+        
+        // Typography
+        fontHeading: '"Cal Sans", "Inter", sans-serif',
+        fontBody: '"Inter", ui-sans-serif, system-ui, sans-serif',
+        fontMono: '"JetBrains Mono", ui-monospace, monospace',
+        fontSerif: '"Playfair Display", ui-serif, Georgia, serif',
+        
+        // Appearance
+        defaultAppearance: 'system',
+        defaultRadius: 'lg',
+        panelBg: 'translucent',
+        
+        // Semantic colors
+        successColor: 'emerald',
+        warningColor: 'amber',
+        errorColor: 'red',
+        infoColor: 'sky'
+      };
+
+      export default config;
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🔧 Troubleshooting</h4>
+      <h3 className="sb-section-item-heading">🔧 Troubleshooting</h3>
       <p className="sb-section-item-paragraph">
         Common issues and solutions:
       </p>

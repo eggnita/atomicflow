@@ -25,9 +25,10 @@ export const RightArrow = () => <svg
     Get started with AtomicFlow in your React project in just a few simple steps.
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">📋 Prerequisites</h4>
+      <h3 className="sb-section-item-heading">📋 Prerequisites</h3>
       <p className="sb-section-item-paragraph">
         Before installing AtomicFlow, make sure your project meets these requirements:
       </p>
@@ -39,106 +40,65 @@ export const RightArrow = () => <svg
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">📦 Step 1: Install the Package</h4>
+      <h3 className="sb-section-item-heading">📦 Step 1: Install the Package</h3>
       <p className="sb-section-item-paragraph">
         Install AtomicFlow using your preferred package manager:
       </p>
       <div style={{ marginBottom: '16px' }}>
         <strong>npm:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-          color: '#000'
-        }}>
-          <code>npm install atomicflow</code>
-        </pre>
+```
+  npm install atomicflow
+```
       </div>
       <div style={{ marginBottom: '16px' }}>
         <strong>yarn:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-          color: '#000'
-        }}>
-          <code>yarn add atomicflow</code>
-        </pre>
+```
+  yarn add atomicflow
+```
       </div>
       <div>
         <strong>pnpm:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-          color: '#000'
-        }}>
-          <code>pnpm add atomicflow</code>
-        </pre>
+```
+  ypnpm add atomicflow
+```
       </div>
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🎨 Step 2: Import Styles</h4>
+      <h3 className="sb-section-item-heading">🎨 Step 2: Import Styles</h3>
       <p className="sb-section-item-paragraph">
         Import the AtomicFlow styles in your main CSS file or at the root of your application:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`/* In your main CSS file (e.g., src/index.css or src/App.css) */
-@import 'atomicflow/index.css';`}</code>
-      </pre>
+```css
+/* In your main CSS file (e.g., src/index.css or src/App.css) */
+@import 'atomicflow/index.css';
+```
       <p className="sb-section-item-paragraph">
         <strong>Or</strong> import it directly in your main JavaScript/TypeScript file:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// In your src/main.tsx or src/index.tsx
-import 'atomicflow/index.css';`}</code>
-      </pre>
+      ```ts
+// In your src/main.tsx or src/index.tsx
+import 'atomicflow/index.css';
+      ```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">⚙️ Step 3: Configure Your Theme (Optional)</h4>
+      <h3 className="sb-section-item-heading">⚙️ Step 3: Configure Your Theme (Optional)</h3>
       <p className="sb-section-item-paragraph">
         Create a theme configuration file in your project root to customize the design system:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// atomicflow.config.js
+      
+```javascript
+// atomicflow.config.js
 /** @type {import('atomicflow').ThemeConfig} */
 export default {
   primaryColor: 'blue',           // or custom color scale
@@ -151,29 +111,23 @@ export default {
   successColor: 'green',
   warningColor: 'yellow',
   errorColor: 'red'
-};`}</code>
-      </pre>
+};
+```
       <p className="sb-section-item-paragraph">
         <em>Note: If you don't create a config file, AtomicFlow will use sensible defaults.</em>
       </p>
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🚀 Step 4: Start Using Components</h4>
+      <h3 className="sb-section-item-heading">🚀 Step 4: Start Using Components</h3>
       <p className="sb-section-item-paragraph">
         Import and use AtomicFlow components in your React application:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`import React from 'react';
+```tsx
+import React from 'react';
 import { Button, Card, H1 } from 'atomicflow';
 
 export function App() {
@@ -188,83 +142,54 @@ export function App() {
       </Card>
     </div>
   );
-}`}</code>
-      </pre>
+}
+```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">📚 Framework-Specific Guides</h4>
+      <h3 className="sb-section-item-heading">📚 Framework-Specific Guides</h3>
       <p className="sb-section-item-paragraph">
         AtomicFlow works with any React framework. Here are some popular setups:
       </p>
       
       <div className="mb-6">
         <strong>Next.js 15:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-          color: '#000'
-        }}>
-          <code>{`// In your app/globals.css or pages/_app.tsx
-import 'atomicflow/index.css';`}</code>
-        </pre>
+```tsx
+// In your app/globals.css or pages/_app.tsx
+import 'atomicflow/index.css';
+```
       </div>
 
       <div className="mb-6">
         <strong>Vite + React:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-        color: '#000'
-        }}>
-          <code>{`// In your src/main.tsx
-import 'atomicflow/index.css';`}</code>
-        </pre>
+```tsx
+// In your src/main.tsx
+import 'atomicflow/index.css';
+```
       </div>
 
       <div>
         <strong>Create React App:</strong>
-        <pre style={{
-          background: '#f6f8fa',
-          padding: '16px',
-          borderRadius: '8px',
-          fontSize: '14px',
-          overflow: 'auto',
-          margin: '8px 0',
-        color: '#000'
-        }}>
-          <code>{`// In your src/index.css or src/App.css
-@import 'atomicflow/index.css';`}</code>
-        </pre>
+```tsx
+// In your src/index.css or src/App.css
+@import 'atomicflow/index.css';
+```
       </div>
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🔧 TypeScript Support</h4>
+      <h3 className="sb-section-item-heading">🔧 TypeScript Support</h3>
       <p className="sb-section-item-paragraph">
         AtomicFlow includes full TypeScript support out of the box. For the best experience, create your theme config as a TypeScript file:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`// atomicflow.config.ts
+```tsx
+// atomicflow.config.ts
 import type { ThemeConfig } from 'atomicflow';
 
 const config: ThemeConfig = {
@@ -274,26 +199,20 @@ const config: ThemeConfig = {
   // ... TypeScript will guide you through all options
 };
 
-export default config;`}</code>
-      </pre>
+export default config;
+```
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">✅ Verification</h4>
+      <h3 className="sb-section-item-heading">✅ Verification</h3>
       <p className="sb-section-item-paragraph">
         To verify your installation is working correctly, try this simple test:
       </p>
-      <pre style={{
-        background: '#f6f8fa',
-        padding: '16px',
-        borderRadius: '8px',
-        fontSize: '14px',
-        overflow: 'auto',
-        color: '#000'
-      }}>
-        <code>{`import { Button } from 'atomicflow';
+```tsx
+import { Button } from 'atomicflow';
 
 function Test() {
   return (
@@ -301,17 +220,18 @@ function Test() {
       Test Button
     </Button>
   );
-}`}</code>
-      </pre>
+}
+```
       <p className="sb-section-item-paragraph">
         If you see a styled button that shows an alert when clicked, you're all set! 🎉
       </p>
     </div>
   </div>
 
+<hr style={{ margin: '16px 0' }} />
   <div className="sb-section">
     <div className="sb-section-item">
-      <h4 className="sb-section-item-heading">🆘 Need Help?</h4>
+      <h3 className="sb-section-item-heading">🆘 Need Help?</h3>
       <p className="sb-section-item-paragraph">
         If you encounter any issues during installation:
       </p>
