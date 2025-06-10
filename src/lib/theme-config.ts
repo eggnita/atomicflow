@@ -133,7 +133,7 @@ export const defaultTheme: ThemeConfig = {
   fontSerif: `ui-serif, Georgia, Cambria, "Times New Roman", Times, serif`,
   
   defaultAppearance: 'system',
-  defaultRadius: 'md',
+  defaultRadius: 'lg',
   panelBg: 'solid',
   
   successColor: 'green',     // Using Tailwind color names

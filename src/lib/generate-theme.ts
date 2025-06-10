@@ -36,15 +36,6 @@ function generateAppearanceCSS(defaultAppearance: 'light' | 'dark' | 'system'): 
 /* Force light mode as default */
 :root {
   --default-theme: 'light';
-}
-
-body:not([data-theme]) {
-  @apply bg-white text-neutral-900;
-}
-
-body:not([data-theme]) .sb-show-main,
-body:not([data-theme]) #storybook-root {
-  @apply bg-white;
 }`;
 
     case 'dark':
@@ -52,15 +43,6 @@ body:not([data-theme]) #storybook-root {
 /* Force dark mode as default */
 :root {
   --default-theme: 'dark';
-}
-
-body:not([data-theme]) {
-  @apply bg-neutral-900 text-white;
-}
-
-body:not([data-theme]) .sb-show-main,
-body:not([data-theme]) #storybook-root {
-  @apply bg-neutral-900;
 }`;
 
     case 'system':
@@ -68,26 +50,6 @@ body:not([data-theme]) #storybook-root {
 /* Use system preference as default */
 :root {
   --default-theme: 'system';
-}
-
-body:not([data-theme]) {
-  @apply bg-white text-neutral-900;
-}
-
-body:not([data-theme]) .sb-show-main,
-body:not([data-theme]) #storybook-root {
-  @apply bg-white;
-}
-
-@media (prefers-color-scheme: dark) {
-  body:not([data-theme]) {
-    @apply bg-neutral-900 text-white;
-  }
-
-  body:not([data-theme]) .sb-show-main,
-  body:not([data-theme]) #storybook-root {
-    @apply bg-neutral-900;
-  }
 }`;
 
     default:

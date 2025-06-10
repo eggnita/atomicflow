@@ -1,5 +1,5 @@
 import React, { ButtonHTMLAttributes } from 'react';
-import { cn } from '../../lib/utils'; // You'll need to create this
+import { cn } from '../../lib/utils';
 
 export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: 'primary' | 'secondary' | 'danger';
@@ -14,11 +14,11 @@ export const Button: React.FC<ButtonProps> = ({
   className = '',
   ...props
 }) => {
-  const baseStyle = 'font-bold focus:outline-none focus:ring-2 focus:ring-opacity-50 transition duration-150 ease-in-out';
+  const baseStyle = 'font-bold focus:outline-none focus:ring-2 focus:ring-opacity-50 cursor-pointer';
 
   // Use CSS variables from the theme
   const variantStyles = {
-    primary: 'bg-primary-500 hover:bg-primary-600 text-white focus:ring-primary-400',
+    primary: 'bg-primary-600 shadow-lg border border-primary-700 shadow-primary-600/30 hover:bg-primary-600 text-white focus:ring-primary-400 focus:border-white focus:shadow-none dark:bg-primary-300 dark:hover:bg-primary-200 dark:focus:ring-primary-500 dark:text-neutral-900',
     secondary: 'bg-neutral-200 hover:bg-neutral-300 text-neutral-900 focus:ring-neutral-400',
     danger: 'bg-error-500 hover:bg-error-600 text-white focus:ring-error-400',
   };

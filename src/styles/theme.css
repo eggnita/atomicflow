@@ -1,7 +1,7 @@
 /* 
  * Auto-generated theme file
  * Do not edit manually - this file is generated from your theme configuration
- * Last generated: 2025-06-09T13:45:17.102Z
+ * Last generated: 2025-06-10T14:20:25.531Z
  */
 
 @theme {
@@ -84,7 +84,7 @@
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
 
   /* Border Radius */
-  --radius-default: 0.375rem;
+  --radius-default: 0.5rem;
   --radius-none: 0;
   --radius-xs: 0.125rem;
   --radius-sm: 0.25rem;
@@ -105,26 +105,6 @@
 /* Use system preference as default */
 :root {
   --default-theme: 'system';
-}
-
-body:not([data-theme]) {
-  @apply bg-white text-neutral-900;
-}
-
-body:not([data-theme]) .sb-show-main,
-body:not([data-theme]) #storybook-root {
-  @apply bg-white;
-}
-
-@media (prefers-color-scheme: dark) {
-  body:not([data-theme]) {
-    @apply bg-neutral-900 text-white;
-  }
-
-  body:not([data-theme]) .sb-show-main,
-  body:not([data-theme]) #storybook-root {
-    @apply bg-neutral-900;
-  }
 }
 
 /* Utility classes for easy usage */

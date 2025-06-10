@@ -71,6 +71,6 @@ export const ButtonDefault: Story = {
   args: {
     variant: 'primary',
     children: 'Button',
-    size: 'large',
+    size: 'medium',
   },
 };

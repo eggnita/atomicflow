@@ -1,17 +1,6 @@
 @import 'tailwindcss';
 @import './theme.css';
 
-/* You can add custom base styles or component layers here if needed */
-
-/*
-  The default border color has changed to `currentcolor` in Tailwind CSS v4,
-  so we've added these compatibility styles to make sure everything still
-  looks the same as it did with Tailwind CSS v3.
-
-  If we ever want to remove these styles, we need to add an explicit border
-  color utility to any element that depends on these defaults.
-*/
-
 @variant dark (&:is([data-theme="dark"], [data-theme="dark"] *));
 
 @layer base {
@@ -24,22 +13,36 @@
   }
 
   body {
-    @apply font-body bg-white text-neutral-900;
+    @apply font-body bg-white text-neutral-900 antialiased;
   }
 
-  .sb-show-main {
-    @apply bg-white;
+  [data-theme='dark'] {
+    body {
+      @apply bg-neutral-900 text-white;
+    }
+
+    #storybook-root,
+    #storybook-preview-wrapper,
+    .sb-show-main,
+    .docs-story {
+      @apply bg-neutral-900;
+    }
   }
 
-  [data-theme='dark'] body {
-    @apply bg-neutral-900 text-white;
-  }
-
-  [data-theme='dark'] .sb-show-main,
-  [data-theme='dark'] #storybook-root,
-  [data-theme='dark'] .docs-story,
-  [data-theme='dark'] #storybook-preview-wrapper {
-    @apply bg-neutral-900;
+  a,
+  button,
+  input,
+  textarea,
+  select,
+  option,
+  optgroup,
+  label,
+  legend,
+  summary,
+  details,
+  dialog,
+  menu {
+    @apply transition duration-150 ease-in-out;
   }
 
   h1,
@@ -50,9 +53,7 @@
   h6 {
     @apply font-heading;
   }
-  p {
-    @apply font-body;
-  }
+
   code,
   pre,
   kbd {

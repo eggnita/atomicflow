@@ -1,8 +1,8 @@
 import { Plugin } from 'vite';
 import fs from 'fs';
 import path from 'path';
-import { generateThemeCSS, validateThemeConfig } from './generate-theme.js';
-import { defaultTheme, ThemeConfig } from './theme-config.js';
+import { generateThemeCSS, validateThemeConfig } from './generate-theme';
+import { defaultTheme, ThemeConfig } from './theme-config';
 
 export function themeConfigPlugin(): Plugin {
   const configFiles = [
